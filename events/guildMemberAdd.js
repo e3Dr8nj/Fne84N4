@@ -45,7 +45,7 @@ exports.phrase=[
 
 exports.run = (client, member) => {
         try{
-          
+          if(member.guild.id!=module.exports.system.SERVER_ID) return;
       //if(member.id!=module.exports.system.SERVER_ID) return;
       let CHANNEL_ID=module.exports.system.CHANNEL_ID;
         

@@ -2,12 +2,12 @@
 const http = require('http');
 const express = require('express');
 const app = express();
-/*
+
 app.get("/", (request, response) => {
   console.log(Date.now() + " Ping Received");
   response.sendStatus(200);
 });
-*/
+
 app.listen(process.env.PORT);
 setInterval(() => {
   http.get(`http://${process.env.PROJECT_DOMAIN}.glitch.me/`);
@@ -37,7 +37,7 @@ app.use(express.static('public'));
 
  
 // http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function(request, response) {
+app.get('/i', function(request, response) {
   response.sendFile(__dirname + '/views/index.html');
    //response.sendStatus(200);
   
@@ -164,10 +164,10 @@ client.on("message", (message) => {
    }else if (message.mentions.members.first().user.id==client.user.id)  {
       
         
-       if(message.guild.id=='301063859702071316'){
+      if(message.guild.id=='301063859702071316'){
         args = message.content.slice().trim().split(/ +/g);
         args[0]='mental';
-       };//if ali
+      };//if ali
         
    };
   
@@ -178,6 +178,7 @@ client.on("message", (message) => {
         start:[['start'],['старт']],
        typing_rnd:[['typemefast'],['ктоябыстро']]
     };
+      if(!args[0]) return;
     for( var key in keyWords){if(keyWords[key][client.lang]==args[0].toLowerCase()){ alias=key; break;}};
 
     let commandFile = require(`./commands/${alias}.js`);
